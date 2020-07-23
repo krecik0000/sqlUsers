@@ -23,9 +23,19 @@ def menu(name,password,email):
         try:
             choice = int(input(":"))
             if choice == 1:
-                cursor.fetchall()
-                print("Total number of Users is: ", cursor.rowcount)
-
+                cursor.execute("SELECT * FROM Users")
+                records = cursor.fetchall()
+                print("Total Users: ", cursor.rowcount)
+                for row in records:
+                    print("----------")
+                    print("Id       | ", row[0])
+                    print("----------")
+                    print("Name     | ", row[1])
+                    print("----------")
+                    print("Password | ", row[2])
+                    print("----------")
+                    print("Email    | ", row[3])
+                    print("----------\n")
             elif choice == 2:
                 addUser(name,password,email)
             elif choice == 3:

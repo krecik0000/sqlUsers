@@ -1,4 +1,5 @@
 import pymysql
+import os
 from termcolor import colored
 
 name = ""
@@ -22,6 +23,17 @@ def showUser():
         print("----------")
         print(colored("Email","yellow") + "    | ",colored(row[3],"yellow"))
         print("----------\n")
+        con = 0
+        try:
+            print("|1|Back")
+            con = int(input(":"))
+            if con == 1:
+                os.system("cls")
+            else:
+                print("Ops! incorrect key")
+        except ValueError:
+            print("Ops! incorrect key")
+        os.system("cls")
 
 def addUser(name,password,email):
     print("Name: ")
@@ -31,12 +43,14 @@ def addUser(name,password,email):
     print("Email: ")
     email = input(":")
     cursor.execute("INSERT INTO Users (name, password, email) VALUES (%s,%s,%s)", (name,password,email))
+    os.system("cls")
 
 def dellUser():
     remove = ""
     print("Which User you want to remove?")
     remove = input("Type name: ")
     cursor.execute("DELETE FROM Users WHERE name=%s", remove)
+    os.system("cls")
 
 def menu(name,password,email):
     choice = 0
@@ -47,6 +61,7 @@ def menu(name,password,email):
         print("|4|Exit")
         try:
             choice = int(input(":"))
+            os.system("cls")
             if choice == 1:
                 showUser()
             elif choice == 2:

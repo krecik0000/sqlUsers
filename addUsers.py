@@ -1,4 +1,5 @@
 import pymysql
+from termcolor import colored
 
 name = ""
 password = ""
@@ -7,7 +8,10 @@ email = ""
 def showUser():
     cursor.execute("SELECT * FROM Users")
     records = cursor.fetchall()
-    print("Total Users: ", cursor.rowcount)
+    if cursor.rowcount != 0:
+        print("Total Users:",colored(cursor.rowcount, 'green'))
+    else:
+        print("Total Users:",colored(cursor.rowcount, 'red'))
     for row in records:
         print("----------")
         print("Id       | ", row[0])

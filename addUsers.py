@@ -25,6 +25,7 @@ def menu(name,password,email):
             if choice == 1:
                 cursor.fetchall()
                 print("Total number of Users is: ", cursor.rowcount)
+
             elif choice == 2:
                 addUser(name,password,email)
             elif choice == 3:
@@ -34,7 +35,7 @@ def menu(name,password,email):
         except ValueError:
             print("Ops! incorrect key")
 
-db = pymysql.connect("localhost","root","","python" )
+db = pymysql.connect("localhost","root","","python" ) #connecting to Database
 
 cursor = db.cursor()
 

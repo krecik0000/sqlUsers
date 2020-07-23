@@ -14,13 +14,13 @@ def showUser():
         print("Total Users:",colored(cursor.rowcount, 'red'))
     for row in records:
         print("----------")
-        print("Id       | ", row[0])
+        print(colored("Id","yellow") + "       | ",colored(row[0],"yellow"))
         print("----------")
-        print("Name     | ", row[1])
+        print(colored("Name","yellow") + "     | ",colored(row[1],"yellow"))
         print("----------")
-        print("Password | ", row[2])
+        print(colored("Password","yellow") + " | ",colored(row[2],"yellow"))
         print("----------")
-        print("Email    | ", row[3])
+        print(colored("Email","yellow") + "    | ",colored(row[3],"yellow"))
         print("----------\n")
 
 def addUser(name,password,email):

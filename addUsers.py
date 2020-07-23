@@ -28,6 +28,12 @@ def addUser(name,password,email):
     email = input(":")
     cursor.execute("INSERT INTO Users (name, password, email) VALUES (%s,%s,%s)", (name,password,email))
 
+def dellUser():
+    remove = ""
+    print("Which User you want to remove?")
+    remove = input("Type name: ")
+    cursor.execute("DELETE FROM Users WHERE name=%s", remove)
+
 def menu(name,password,email):
     choice = 0
     while choice != 4:
@@ -42,7 +48,7 @@ def menu(name,password,email):
             elif choice == 2:
                 addUser(name,password,email)
             elif choice == 3:
-                print("3")
+                dellUser()
             elif choice == isinstance(choice, str) and choice != 1 and choice != 2 and choice != 3 and choice != 4:
                 print("Ops! incorrect key")
         except ValueError:
